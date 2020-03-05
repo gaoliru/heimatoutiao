@@ -70,7 +70,23 @@ export default {
   methods: { // promise方式
     login () {
       this.$refs.loginForm.validate().then(() => {
-        console.log('欢迎光临')
+        this.$axios({
+          url: '/authorizations', // 请求地址
+          // params: {}, // 地址参数 指的是url参数会拼接到url地址上面 常常说的get参数
+          // 上面定义的变量名和这里的参数名相同可以直接使用 多传了一个参数不影响
+          data: this.loginForm, // body请求体参数   常用post   put  patch
+          method: 'post'// 请求类型post/get/delete/put/patch默认值是get
+        // 可以全大写或者全小写 等同于this.$axios.post
+        }).then(result => {
+          // 成功执行的函数 data里保存成功与否的数据
+          //  把钥匙保存 token存于 本地缓存中
+          window.localStorage.setItem('user-token', result.data.data.token)
+        }).catch(() => {
+          this.$message({ message: '用户名或者密码错误', type: 'error' })
+          // this.$message.error('用户名或密码错误')
+          // 来自框架的提示消息直接用没有提示消息
+          // 需要加上消息类型 两种方法都可以
+        })
       })
     // 回调函数方式
     //   this.$refs.loginForm.validate(function (isOK) {
