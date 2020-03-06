@@ -1,15 +1,15 @@
 <template>
 <!--  -->
     <el-container>
-        <el-aside>
-            <!-- 左侧导航 -->
-            <h1>左侧</h1>
+        <el-aside style="width:200px">
+<!-- 左侧导航组件 -->
+         <layout-aside></layout-aside>
         </el-aside>
 
         <el-container>
             <el-header>
-                <h1>顶部</h1>
-                <!-- 顶部 -->
+                <!-- 顶部组件 -->
+                <layout-header></layout-header>
             </el-header>
 
             <el-main>
@@ -23,8 +23,15 @@
     </el-container>
 </template>
 <script>
-export default {
+// 引入左侧导航组件   注册 并使用
+import LayoutAside from '@/components/home/layout-aside'
 
+import LayoutHeader from '@/components/home/layout-header'
+export default {
+  components: {
+    'layout-aside': LayoutAside,
+    'layout-header': LayoutHeader
+  }
 }
 </script>
 <style>

@@ -4,7 +4,8 @@
         <el-card class="login-card">
             <!-- 表单内容 -->
             <!-- 头部login图片文字部分 -->
-            <div class="title"><img src="../../assets/img/logo_index.png" alt=""></div>
+            <div class="title"><img src="../../assets/img/xin.jpg" alt="">
+            <img src="../../assets/img/tt.jpg" alt=""></div>
       <!-- 表单用el-form  绑定model属性  绑定rules属性（表单验证规则）-->
        <el-form ref="loginForm" :model="loginForm" :rules="loginRules" style="margin-top:20px">
            <!-- 表单内容用<el-form-item> 校验字段prop="mobile" prop表示要绑定的字段名-->
@@ -109,11 +110,12 @@ export default {
     display:flex;
     justify-content: center;
     &:before {
+      background-image: url('../../assets/img/shou.jpg');
         content: '123';
         width: 100%;
-        height: 100%;
+        height: 700px;
         position: absolute;
- background-image: url('../../assets/img/bj.jpg');
+
  filter: blur(2px);//毛玻璃效果
 background-size: cover;//自适应
  }
