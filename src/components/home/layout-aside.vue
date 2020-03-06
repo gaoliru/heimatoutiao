@@ -18,10 +18,10 @@
           <span>内容管理</span>
         </template>
 
-        <el-menu-item>发布文章</el-menu-item>
+        <el-menu-item>发布说说</el-menu-item>
         <el-menu-item>内容列表</el-menu-item>
         <el-menu-item>评论列表</el-menu-item>
-        <el-menu-item>素材管理</el-menu-item>
+        <el-menu-item>我的素材</el-menu-item>
       </el-submenu>
       <el-submenu>
         <!-- 二级菜单用el-submenu -->

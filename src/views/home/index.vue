@@ -24,14 +24,15 @@
 </template>
 <script>
 // 引入左侧导航组件   注册 并使用
-import LayoutAside from '@/components/home/layout-aside'
-
-import LayoutHeader from '@/components/home/layout-header'
+// import LayoutAside from '@/components/home/layout-aside'
+// 优化 在index.js里注册
+// import LayoutHeader from '@/components/home/layout-header'
 export default {
-  components: {
-    'layout-aside': LayoutAside,
-    'layout-header': LayoutHeader
-  }
+//   components: {
+  // index.js里全局注册了
+//     'layout-aside': LayoutAside,
+//     'layout-header': LayoutHeader
+//   }
 }
 </script>
 <style>

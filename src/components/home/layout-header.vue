@@ -10,22 +10,22 @@
           <!-- end 让这个标签靠边 -->
          <el-row type='flex' justify="end" align="middle">
 
-          <img src="../../assets/img/tt.jpg" alt="">
+          <img :src="userInfo.photo" alt="">
            <!--放一个下拉菜单 -->
-           <el-dropdown trigger="click">
-               <span>新头条管理员</span>
+           <el-dropdown trigger="click" @command="clickMenu">
+               <span>{{userInfo.name}}</span>
                <!-- 下拉菜单需要一个具名插槽dropdown  el-dropdown-menu专门做下拉的组件-->
            <el-dropdown-menu slot="dropdown">
            <!-- el-dropdown-item -->
-               <el-dropdown-item>
+               <el-dropdown-item command="info">
                    <i class="el-icon-user"></i>
-                   <span>管理员信息</span>
+                   <span>我的信息</span>
                    </el-dropdown-item>
-               <el-dropdown-item>
+               <el-dropdown-item command="number">
                  <i class="el-icon-phone"></i>
-                 <span>管理员联系方式</span>
+                 <span >我的其他联系方式</span>
                </el-dropdown-item>
-           <el-dropdown-item>
+           <el-dropdown-item command="lgout">
                   <i class="el-icon-turn-off"></i>
                   <span>退出</span>
           </el-dropdown-item>
@@ -38,7 +38,44 @@
 
 <script>
 export default {
+  data () {
+    return {
+      userInfo: {}
+    // 用户个人信息
+    }
+  },
+  methods: {
+    clickMenu (command) {
+      if (command === 'info') {
 
+      } else if (command === 'number') {
+        window.location.href = 'https://github.com/gaoliru'
+      } else {
+        window.localStorage.removeItem('user-token')
+        // 删除本地缓存中的token
+        this.$router.push('/login')
+      }
+    }
+  },
+  //   data数据结束
+  created () {
+    //   从本地缓存中取得token
+    const token = localStorage.getItem('user-token')
+    // 获取用户信息
+    this.$axios({
+      url: '/user/profile',
+      //   请求地址
+      // 设置请求头参数 headers
+      headers: {
+        Authorization: `Bearer ${token}` // 格式要求Bearer空格+token
+        //  message不写默认get
+      }
+    }).then(result => {
+      // result里有个data 且里面包含一个data
+      this.userInfo = result.data.data
+    //   取得数据 动态添加
+    })
+  }
 }
 </script>
 
