@@ -12,8 +12,7 @@
                 <layout-header></layout-header>
             </el-header>
 
-            <el-main>
-                <h1>核心</h1>
+            <el-main style="padding:0">
                 <!-- 核心区域 -->
                 <!--这里需要一个二级路由容器 -->
                 <router-view></router-view>
