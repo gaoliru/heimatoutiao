@@ -59,17 +59,14 @@ export default {
   },
   //   data数据结束
   created () {
-    //   从本地缓存中取得token
-    const token = localStorage.getItem('user-token')
+    // //   从本地缓存中取得token 在拦截器中设置
+    // const token = localStorage.getItem('user-token')
     // 获取用户信息
     this.$axios({
-      url: '/user/profile',
+      url: '/user/profile'
       //   请求地址
       // 设置请求头参数 headers
-      headers: {
-        Authorization: `Bearer ${token}` // 格式要求Bearer空格+token
-        //  message不写默认get
-      }
+
     }).then(result => {
       // result里有个data 且里面包含一个data
       this.userInfo = result.data.data

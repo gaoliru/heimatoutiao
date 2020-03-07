@@ -5,7 +5,7 @@ import '../src/permission' // 引入token权限模块
 import ElementUI from 'element-ui' // 引入模块
 import 'element-ui/lib/theme-chalk/index.css' // 引入样式
 import '@/styles/index.less' // 引入样式
-import axios from 'axios'
+import axios from '@/utils/request' // 引入封装过的request.js
 // 引入自定义index.js文件 可以简写不加index.js
 import Components from '@/components'
 Vue.use(ElementUI) // 全局注册element-ui框架 一旦注册所有位置都可以使用组件
@@ -16,9 +16,6 @@ Vue.use(Components)
 Vue.use(ElementUI) // 全局注册element-ui框架 一旦注册所有的位置都可以使用组件
 // Vue.use实际上会调用ElementUI对象里的一个install方法并传入当前的vue对象
 
-// 配置axios的baseURL
-axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
-// 配置公共的请求头地址
 Vue.prototype.$axios = axios
 // 将axios赋值给Vue对象的原型属性
 new Vue({
