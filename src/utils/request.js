@@ -29,6 +29,7 @@ function (error) {
 axios.interceptors.response.use(function (response) {
 // 成功时执行   回调函数第一个参数时响应体
 // 在拦截器中需要将数据返回
+// 有的接口没有任何的响应数据
 // response里有这个data参数将他返回没有返回空对象
   return response.data ? response.data : {}
 },
@@ -41,6 +42,7 @@ function (error) {
     localStorage.removeItem('user-token')
     router.push('/login')
   }
+  return Promise.reject(error)
 }
 )
 

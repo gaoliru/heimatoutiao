@@ -66,10 +66,9 @@ export default {
       url: '/user/profile'
       //   请求地址
       // 设置请求头参数 headers
-
     }).then(result => {
       // result里有个data 且里面包含一个data
-      this.userInfo = result.data.data
+      this.userInfo = result.data
     //   取得数据 动态添加
     })
   }

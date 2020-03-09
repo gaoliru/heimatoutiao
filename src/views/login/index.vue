@@ -81,7 +81,7 @@ export default {
         }).then(result => {
           // 成功执行的函数 data里保存成功与否的数据
           //  把钥匙保存 token存于 本地缓存中
-          window.localStorage.setItem('user-token', result.data.data.token)
+          window.localStorage.setItem('user-token', result.data.token)
           // this.$router 可以获取到路由实例对象
           // 跳转到主页
           this.$router.push('/home')

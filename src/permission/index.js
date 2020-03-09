@@ -15,7 +15,8 @@ router.beforeEach(function (to, from, next) {
     if (token) {
       next()
     } else {
-      next('/home')
+      next('/login')
+      // 回登录页拿钥匙
     }
   } else {
     next()
