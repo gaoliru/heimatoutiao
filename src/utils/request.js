@@ -2,6 +2,7 @@
 //  对于axios 得二次封装
 // 配置拦截器及其他
 import axios from 'axios'
+import router from '../router'
 // 拦截器及其他的操作
 // 配置axios的baseURL
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
@@ -22,4 +23,25 @@ function (error) {
 //   如果失败了我们应该直接reject 会直接进入到axios得catch中
   return Promise.reject(error)
 })
+
+// 响应拦截器得开发
+
+axios.interceptors.response.use(function (response) {
+// 成功时执行   回调函数第一个参数时响应体
+// 在拦截器中需要将数据返回
+// response里有这个data参数将他返回没有返回空对象
+  return response.data ? response.data : {}
+},
+function (error) {
+// 失败执行
+// error是错误对象 里面包含了错误代码和响应信息
+// 401 错误表示钥匙有问题
+// 换钥匙前把旧的清除
+  if (error.response.status === 401) {
+    localStorage.removeItem('user-token')
+    router.push('/login')
+  }
+}
+)
+
 export default axios
